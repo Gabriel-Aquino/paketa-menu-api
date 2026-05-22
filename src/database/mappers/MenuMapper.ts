@@ -11,6 +11,10 @@ export class MenuMapper {
         }
     }
 
+    static toDomainArray(menus: IMenu[]): Menu[] {
+        return menus.map((menu) => this.toDomain(menu));
+    }
+
     static toModel(menu: Menu): Omit<IMenu, keyof Document> {
         return {
             id: menu.id,
