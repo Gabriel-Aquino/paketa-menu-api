@@ -5,7 +5,7 @@ import type { IMenu } from "../models/mongodb/Menu.schema";
 export class MenuMapper {
     static toDomain(menu: IMenu): Menu {
         return {
-            id: menu.id,
+            id: menu._id,
             name: menu.name,
             relatedId: menu.relatedId || null
         }
@@ -15,9 +15,9 @@ export class MenuMapper {
         return menus.map((menu) => this.toDomain(menu));
     }
 
-    static toModel(menu: Menu): Omit<IMenu, keyof Document> {
+    static toModel(menu: Menu): Partial<IMenu> {
         return {
-            id: menu.id,
+            _id: menu.id,
             name: menu.name,
             relatedId: menu.relatedId ?? null
         }

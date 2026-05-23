@@ -10,7 +10,7 @@ export class MongoMenuRepository implements IMenuRepository<Menu> {
     }
 
     async findById(id: string): Promise<Menu | null> {
-        const document = await MenuModel.findOne({ id });
+        const document = await MenuModel.findById(id);
         return document ? MenuMapper.toDomain(document) : null;
     }
 
@@ -30,6 +30,6 @@ export class MongoMenuRepository implements IMenuRepository<Menu> {
     }
 
     async delete(id: string): Promise<void> {
-        await MenuModel.deleteOne({ id });
+        await MenuModel.deleteOne({ _id: id });
     }
 }

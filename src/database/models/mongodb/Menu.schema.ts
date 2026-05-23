@@ -1,17 +1,16 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-export interface IMenu extends Document {
-    id: string;
+export interface IMenu extends Document<string> {
+    _id: string;
     name: string;
     relatedId: string | null;
 }
 
 const MenuSchema: Schema = new Schema<IMenu>(
     {
-        id: {
+        _id: {
             type: String,
-            required: true,
-            unique: true
+            required: true
         },
         name: {
             type: String,
