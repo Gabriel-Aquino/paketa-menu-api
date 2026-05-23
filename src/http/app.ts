@@ -4,6 +4,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { ErrorHandler } from './middlewares/ErrorHandler';
+import Routes from './routes/MainRoutes';
 
 export class App {
   public server: Express;
@@ -23,10 +24,8 @@ export class App {
   }
 
   private routes() {
-    // TODO: Registrar rotas aqui (ex: this.server.use(route))
-    this.server.get('/health', (req, res) => {
-        res.status(200).json({ status: 'OK' });
-    });
+    const routes: Routes = new Routes();
+    this.server.use(routes.execute());
   }
 
   private exceptionHandler() {

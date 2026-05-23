@@ -1,10 +1,9 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { Menu } from "../../../domain/entities/Menu.entities";
 
 export interface IMenu extends Document {
     id: string;
     name: string;
-    relatedId: mongoose.Types.ObjectId | null;
+    relatedId: string | null;
 }
 
 const MenuSchema: Schema = new Schema<IMenu>(
@@ -19,7 +18,7 @@ const MenuSchema: Schema = new Schema<IMenu>(
             required: true
         },
         relatedId: {
-            type: Schema.Types.ObjectId,
+            type: String,
             ref: 'Menu',
             default: null
         }

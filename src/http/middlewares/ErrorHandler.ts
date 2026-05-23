@@ -11,8 +11,7 @@ export class ErrorHandler {
     console.error(err);
 
     return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-      status: 'error',
-      message: 'Internal server error',
+      message: 'Internal Server Error',
     });
   }
 }

@@ -2,17 +2,21 @@ import type { IMenuRepository } from "@domain/repositories/IMenuRepository";
 import { Menu } from "@domain/entities/Menu.entities";
 import AppError from "@shared/errors/AppError";
 import { HttpStatus } from "@shared/utils/HttpStatus";
+import { CreateMenuRequest } from "../dtos/CreateMenuRequest";
+import { ICreateMenuService } from "../contracts/ICreateMenuService";
+import CreateMenuResponse from "../dtos/CreateMenuResponse";
 
-type CreateMenuRequest = {
-    name: string;
-    relatedId?: string | null;
-}
-
-export class CreateMenuService {
+export class CreateMenuService implements ICreateMenuService {
     constructor(private readonly menuRepository: IMenuRepository<Menu>) { }
 
-    async execute(menuData: CreateMenuRequest): Promise<Menu> {
+    async execute(menuData: CreateMenuRequest): Promise<CreateMenuResponse> {
         const { name, relatedId } = menuData;
+
+        const findMenuByName = await this.menuRepository.findByName(name);
+
+        if (findMenuByName) {
+            throw new AppError("menu or submenu with this name already exists.", HttpStatus.BAD_REQUEST);
+        }
 
         const menuEntityToCreate = Menu.create(name, relatedId || null);
 
@@ -20,12 +24,12 @@ export class CreateMenuService {
             const parentMenuEntity = await this.menuRepository.findById(menuEntityToCreate.relatedId);
 
             if (!parentMenuEntity) {
-                throw new AppError("O menu pai especificado não foi encontrado.", HttpStatus.NOT_FOUND);
+                throw new AppError("Parent menu not found.", HttpStatus.NOT_FOUND);
             }
         }
 
         const createdMenu = await this.menuRepository.create(menuEntityToCreate);
 
-        return createdMenu;
+        return CreateMenuResponse.build(createdMenu.id);
     }
 }

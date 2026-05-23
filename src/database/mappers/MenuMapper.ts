@@ -5,9 +5,9 @@ import type { IMenu } from "../models/mongodb/Menu.schema";
 export class MenuMapper {
     static toDomain(menu: IMenu): Menu {
         return {
-            id: menu._id.toString(),
+            id: menu.id,
             name: menu.name,
-            relatedId: menu.relatedId?.toString() || null
+            relatedId: menu.relatedId || null
         }
     }
 
@@ -19,7 +19,7 @@ export class MenuMapper {
         return {
             id: menu.id,
             name: menu.name,
-            relatedId: menu.relatedId ? new Types.ObjectId(menu.relatedId) : null
+            relatedId: menu.relatedId ?? null
         }
     }
 }
