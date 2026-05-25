@@ -10,3 +10,6 @@ package-lock.json
 
 # MISC
 .DS_Store
+
+*.log
+dist
