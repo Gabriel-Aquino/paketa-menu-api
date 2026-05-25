@@ -9,7 +9,7 @@ export class ValidateSchemaMiddleware {
 
     constructor(private readonly schema: ZodType, private readonly enumType: 'body' | 'query' | 'params') { }
 
-    public validate = (request: Request, response: Response, next: NextFunction) => {
+    public validate = (request: Request, _: Response, next: NextFunction) => {
         try {
             const data = this.schema.parse(request[this.enumType]);
             request[this.enumType] = data;

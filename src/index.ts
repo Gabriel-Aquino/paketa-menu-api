@@ -15,21 +15,21 @@ class Server {
       await this.database.connect();
 
       const serverInstance = app.listen(this.port, () => {
-        console.log(`Servidor rodando na porta ${this.port}`);
+        console.log(`Server started on port ${this.port}`);
       });
 
       this.setupGracefulShutdown(serverInstance);
     } catch (error) {
-      console.error('Erro crítico ao iniciar a aplicação:', error);
+      console.error('Critical error when starting the application:', error);
       process.exit(1);
     }
   }
 
   private setupGracefulShutdown(serverInstance: any): void {
     const gracefulShutdown = async () => {
-      console.log('Iniciando o encerramento da aplicação...');
+      console.log('Starting to shut down the application...');
       serverInstance.close(async () => {
-        console.log('Servidor HTTP encerrado.');
+        console.log('HTTP server closed.');
         await this.database.disconnect();
         process.exit(0);
       });

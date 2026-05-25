@@ -11,7 +11,7 @@ export class Menu {
 
     public static create(name: string, relatedId: string | null = null, id?: string): Menu {
         if (!name || name.trim().length === 0) {
-            throw new AppError("O nome do menu ou submenu é obrigatório.", HttpStatus.BAD_REQUEST);
+            throw new AppError("Menu or submenu name is required.", HttpStatus.BAD_REQUEST);
         }
 
         const menuId = id || randomUUID();

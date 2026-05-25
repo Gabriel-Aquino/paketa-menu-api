@@ -4,20 +4,23 @@ export class Database {
     private uri: string;
 
     constructor(uri?: string) {
-        this.uri = uri || process.env.MONGO_URI || 'mongodb://localhost:27017/paketa_menu';
+        if (!uri && !process.env.MONGO_URI) {
+            throw new Error('MONGO_URI not configured.');
+        }
+        this.uri = uri || process.env.MONGO_URI!;
     }
 
     public async connect(): Promise<void> {
         try {
             await mongoose.connect(this.uri);
-            console.log('Conexão com o MongoDB estabelecida com sucesso.');
+            console.log('MongoDB connection success.');
         } catch (error) {
-            throw new Error(`Falha ao conectar no MongoDB: ${(error as Error).message}`);
+            throw new Error(`Failed to connect to MongoDB: ${(error as Error).message}`);
         }
     }
 
     public async disconnect(): Promise<void> {
         await mongoose.connection.close();
-        console.log('Conexão com o banco de dados encerrada.');
+        console.log('MongoDB connection closed.');
     }
 }

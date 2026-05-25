@@ -39,6 +39,7 @@ export class GetMenuTreeService implements IGetMenuTreeService {
             if (node.submenus && node.submenus.length === 0) {
                 delete node.submenus;
             }
+            delete (node as any).relatedId;
         }
 
 
