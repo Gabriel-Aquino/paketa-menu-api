@@ -1,6 +1,5 @@
-import { Types, Document } from "mongoose";
-import type { Menu } from "../../domain/entities/Menu.entities";
-import type { IMenu } from "../models/mongodb/Menu.schema";
+import type { Menu } from "@domain/entities/Menu.entities";
+import type { IMenu } from "@database/models/mongodb/Menu.schema";
 
 export class MenuMapper {
     static toDomain(menu: IMenu): Menu {

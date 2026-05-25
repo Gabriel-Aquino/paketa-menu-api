@@ -2,9 +2,9 @@ import type { IMenuRepository } from "@domain/repositories/IMenuRepository";
 import { Menu } from "@domain/entities/Menu.entities";
 import AppError from "@shared/errors/AppError";
 import { HttpStatus } from "@shared/utils/HttpStatus";
-import { CreateMenuRequest } from "../dtos/CreateMenuRequest";
-import { ICreateMenuService } from "../contracts/ICreateMenuService";
-import CreateMenuResponse from "../dtos/CreateMenuResponse";
+import { CreateMenuRequest } from "@application/dtos/CreateMenuRequest";
+import { ICreateMenuService } from "@application/contracts/ICreateMenuService";
+import CreateMenuResponse from "@application/dtos/CreateMenuResponse";
 
 export class CreateMenuService implements ICreateMenuService {
     constructor(private readonly menuRepository: IMenuRepository<Menu>) { }

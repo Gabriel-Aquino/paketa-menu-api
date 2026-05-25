@@ -6,11 +6,24 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "paths": {
-      "@http/*": ["./src/http/*"],
-      "@shared/*": ["./src/shared/*"],
-      "@domain/*": ["./src/domain/*"],
-      "@config/*": ["./src/config/*"],
-      "@database/*": ["./src/database/*"]
+      "@http/*": [
+        "./src/http/*"
+      ],
+      "@shared/*": [
+        "./src/shared/*"
+      ],
+      "@domain/*": [
+        "./src/domain/*"
+      ],
+      "@config/*": [
+        "./src/config/*"
+      ],
+      "@application/*": [
+        "./src/application/*"
+      ],
+      "@database/*": [
+        "./src/database/*"
+      ]
     },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -19,8 +32,16 @@
     "skipLibCheck": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "types": ["node", "jest"]
+    "types": [
+      "node",
+      "jest"
+    ]
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

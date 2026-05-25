@@ -1,8 +1,8 @@
 import type { IMenuRepository } from "@domain/repositories/IMenuRepository";
 import { Menu } from "@domain/entities/Menu.entities";
 import type { MenuTree } from "@domain/entities/MenuTree.entities";
-import { IGetMenuTreeService } from "../contracts/IGetMenuTreeService";
-import { GetMenuResponse } from "../dtos/GetMenuResponse";
+import { IGetMenuTreeService } from "@application/contracts/IGetMenuTreeService";
+import { GetMenuResponse } from "@application/dtos/GetMenuResponse";
 
 export class GetMenuTreeService implements IGetMenuTreeService {
     constructor(private readonly menuRepository: IMenuRepository<Menu>) { }

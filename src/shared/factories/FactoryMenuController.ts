@@ -1,8 +1,8 @@
 import { MongoMenuRepository } from "@database/repositories/MongoMenuRepository";
 import MenuController from "@http/controllers/MenuController";
-import { CreateMenuService } from "../../application/services/CreateMenuService";
-import { GetMenuTreeService } from "../../application/services/GetMenuTreeService";
-import { DeleteMenuService } from "../../application/services/DeleteMenuService";
+import { CreateMenuService } from "@application/services/CreateMenuService";
+import { GetMenuTreeService } from "@application/services/GetMenuTreeService";
+import { DeleteMenuService } from "@application/services/DeleteMenuService";
 
 export const factoryMenuController = (): MenuController => {
 

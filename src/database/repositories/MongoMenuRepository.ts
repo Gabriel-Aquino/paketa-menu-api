@@ -1,7 +1,7 @@
-import { IMenuRepository } from "../../domain/repositories/IMenuRepository";
-import type { Menu } from "../../domain/entities/Menu.entities";
-import { MenuModel } from "../models/mongodb/Menu.schema";
-import { MenuMapper } from "../mappers/MenuMapper";
+import { IMenuRepository } from "@domain/repositories/IMenuRepository";
+import type { Menu } from "@domain/entities/Menu.entities";
+import { MenuModel } from "@database/models/mongodb/Menu.schema";
+import { MenuMapper } from "@database/mappers/MenuMapper";
 
 export class MongoMenuRepository implements IMenuRepository<Menu> {
     async findAll(): Promise<Menu[]> {

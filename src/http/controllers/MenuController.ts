@@ -1,9 +1,9 @@
-import { ICreateMenuService } from "../../application/contracts/ICreateMenuService";
+import { ICreateMenuService } from "@application/contracts/ICreateMenuService";
 import { Request, Response } from "express";
-import { CreateMenuRequest } from "../../application/dtos/CreateMenuRequest";
+import { CreateMenuRequest } from "@application/dtos/CreateMenuRequest";
 import { HttpStatus } from "@shared/utils/HttpStatus";
-import { IGetMenuTreeService } from "../../application/contracts/IGetMenuTreeService";
-import { IDeleteMenuService } from "../../application/contracts/IDeleteMenuService";
+import { IGetMenuTreeService } from "@application/contracts/IGetMenuTreeService";
+import { IDeleteMenuService } from "@application/contracts/IDeleteMenuService";
 
 export default class MenuController {
 

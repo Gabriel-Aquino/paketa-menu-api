@@ -2,7 +2,7 @@ import type { IMenuRepository } from "@domain/repositories/IMenuRepository";
 import { Menu } from "@domain/entities/Menu.entities";
 import AppError from "@shared/errors/AppError";
 import { HttpStatus } from "@shared/utils/HttpStatus";
-import { IDeleteMenuService } from "../contracts/IDeleteMenuService";
+import { IDeleteMenuService } from "@application/contracts/IDeleteMenuService";
 
 export class DeleteMenuService implements IDeleteMenuService {
     constructor(private readonly menuRepository: IMenuRepository<Menu>) { }
